@@ -21,6 +21,21 @@ public class Student {
     private String phoneNumber;
     private String username;
     private String password;
+    //parameterized constructor
+
+    public Student() {
+    }    
+
+    public Student(String name, int registrationNumber, Course course, String gender, String phoneNumber, String username, String password) {
+        this.name = name;
+        this.registrationNumber = registrationNumber;
+        this.course = course;
+        this.gender = gender;
+        this.phoneNumber = phoneNumber;
+        this.username = username;
+        this.password = password;
+    }
+    
 
     //getters and setters
     public String getName() {
