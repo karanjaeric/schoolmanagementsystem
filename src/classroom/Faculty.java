@@ -33,6 +33,11 @@ public class Faculty {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Faculty{" + "facultyCode=" + facultyCode + ", name=" + name + '}';
+    }
+  
     
-   
 }
