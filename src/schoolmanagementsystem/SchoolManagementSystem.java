@@ -5,6 +5,7 @@
  */
 package schoolmanagementsystem;
 
+import classroom.Course;
 import classroom.Student;
 
 /**
@@ -17,6 +18,11 @@ public class SchoolManagementSystem {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        Course bbit=new Course();
+        bbit.setCourseCode("BBIT");
+        bbit.setCourseName("Business Information Technology");
+        bbit.setCourseYear(2020);
 
         //create objects using new keywork.Invoke a no args constructor
         Student franc = new Student();
@@ -26,11 +32,12 @@ public class SchoolManagementSystem {
         franc.setPassword("123");
         franc.setPhoneNumber("25470234554");
         franc.setRegistrationNumber(1);
+        franc.setCourse(bbit);
         //parameterized constructor
-        Student elizabeth = new Student("Elizabeth Musanga", 2, null, "Female", "2545667875", "emusanga", "1234");
+        Student elizabeth = new Student("Elizabeth Musanga", 2, bbit, "Female", "2545667875", "emusanga", "1234");
 
-        System.out.println("Name=>" + franc.getName() + " Gender=>" + franc.getGender() + " Username=>" + franc.getUsername());
-        System.out.println("Name=>" + elizabeth.getName() + " Gender=>" + elizabeth.getGender() + " Username=>" + elizabeth.getUsername());
+        System.out.println(franc.toString());
+        System.out.println(elizabeth.toString());
 
     }
 

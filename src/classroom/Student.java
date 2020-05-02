@@ -93,4 +93,11 @@ public class Student {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" + "name=" + name + ", registrationNumber=" + registrationNumber + ", course=" + course + ", gender=" + gender + ", phoneNumber=" + phoneNumber + ", username=" + username + ", password=" + password + '}';
+    }
+    
+    
 }

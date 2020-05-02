@@ -49,6 +49,11 @@ public class Course {
     public void setCourseYear(int courseYear) {
         this.courseYear = courseYear;
     }
+
+    @Override
+    public String toString() {
+        return "Course{" + "courseCode=" + courseCode + ", courseName=" + courseName + ", faculty=" + faculty + ", courseYear=" + courseYear + '}';
+    }
     
     
     
