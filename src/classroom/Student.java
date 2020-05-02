@@ -9,15 +9,12 @@ package classroom;
  *
  * @author ekaranja
  */
-public class Student {
+public class Student extends Person{
 
     /**
      * Fields/properties
      */
-    private String name;
-    private int registrationNumber;
     private Course course;
-    private String gender;
     private String phoneNumber;
     private String username;
     private String password;
@@ -26,33 +23,14 @@ public class Student {
     public Student() {
     }    
 
-    public Student(String name, int registrationNumber, Course course, String gender, String phoneNumber, String username, String password) {
-        this.name = name;
-        this.registrationNumber = registrationNumber;
+    public Student(String name,Course course, String phoneNumber, String username, String password) {
         this.course = course;
-        this.gender = gender;
         this.phoneNumber = phoneNumber;
         this.username = username;
         this.password = password;
+        this.setName(name);
     }
     
-
-    //getters and setters
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getRegistrationNumber() {
-        return registrationNumber;
-    }
-
-    public void setRegistrationNumber(int registrationNumber) {
-        this.registrationNumber = registrationNumber;
-    }
 
     public Course getCourse() {
         return course;
@@ -62,13 +40,6 @@ public class Student {
         this.course = course;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -96,8 +67,9 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" + "name=" + name + ", registrationNumber=" + registrationNumber + ", course=" + course + ", gender=" + gender + ", phoneNumber=" + phoneNumber + ", username=" + username + ", password=" + password + '}';
+        return "Student{" + "course=" + course + ", phoneNumber=" + phoneNumber + ", username=" + username + ", password=" + password + '}';
     }
-    
+
+ 
     
 }
