@@ -8,9 +8,13 @@ package schoolmanagementsystem;
 import classroom.Course;
 import classroom.Faculty;
 import classroom.Student;
-import com.sun.javafx.scene.control.skin.VirtualFlow;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import service.StudentService;
 import service.StudentsServiceI;
 
@@ -23,37 +27,53 @@ public class SchoolManagementSystem {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
-        Faculty faculty = new Faculty();
-        faculty.setFacultyCode("C026");
-        faculty.setFacultyCode("Computer Science & IT");
+        //Scanner
+        Scanner scanner = new Scanner(System.in);
 
-        Course bbit = new Course();
-        bbit.setCourseCode("BBIT");
-        bbit.setCourseName("Business Information Technology");
-        bbit.setCourseYear(2020);
-        bbit.setFaculty(faculty);
-        List<Student> students = new ArrayList<>();
+        System.out.println("Enter Your Student Name");
+        String name = scanner.nextLine();
 
-        //create objects using new keywork.Invoke a no args constructor
-        Student franc = new Student();
-        franc.setName("Franc");
-        franc.setGender("Male");
-        franc.setUsername("franc123");
-        franc.setPassword("123");
-        franc.setPhoneNumber("25470234554");
-        franc.setRegistrationNumber("1");
-        franc.setCourse(bbit);
-        //parameterized constructor
-        Student elizabeth = new Student("Elizabeth", bbit, "2545667875", "emusanga", "1234");
-        List<Student> newStudents = new ArrayList<>();
-        newStudents.add(franc);
-        newStudents.add(elizabeth);
-        StudentsServiceI studentServiceI = new StudentService();
-        students = studentServiceI.addStudents(students, newStudents);
-        System.out.println("Total Number of Students " + students.size());
-        System.out.println(students.toString());
+        System.out.println("Enter Your Reg No");
+        String registrationNumber = scanner.nextLine();
+
+        System.out.println("Enter Your Gender");
+        String gender = scanner.nextLine();
+
+        System.out.println("Enter Your Course");
+        String course = scanner.nextLine();
+
+        System.out.println("Enter Your Phone Number");
+        String phoneNumber = scanner.nextLine();
+
+        System.out.println("Enter Your Username");
+        String username = scanner.nextLine();
+
+        System.out.println("Enter Your Password");
+        String password = scanner.nextLine();
+
+        /**
+         * include jdbc driver in my project. connect to database create an
+         * insert statement create a prepared statement set parameters execute.
+         *
+         */
+        String url = "jdbc:mysql://localhost:3306/smsdatabase?useSSL=false";
+        String dbUsername = "root";
+        String dbPassword = "";
+        String insertStudentQuery = "insert into students (name,registrationNumber,gender,course,phoneNumber,username,password)"
+                + "values (?,?,?,?,?,?,?)";
+        Connection connection = DriverManager.getConnection(url, dbUsername, dbPassword);
+        PreparedStatement insertPst = connection.prepareStatement(insertStudentQuery);
+        insertPst.setString(1, name);
+        insertPst.setString(2, registrationNumber);
+        insertPst.setString(3, gender);
+        insertPst.setString(4, course);
+        insertPst.setString(5, phoneNumber);
+        insertPst.setString(6, username);
+        insertPst.setString(7, password);
+
+        insertPst.executeUpdate();
 
     }
 
